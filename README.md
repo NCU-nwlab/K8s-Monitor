@@ -7,8 +7,8 @@ Depends On:
 - [BPFtrace](https://github.com/iovisor/bpftrace)
 ## Feature
 - Node sources monitor eg. CPU, Memory, Disk I/O
-- Network Flow Monitor
-- Log Trace
+- Network Flow Monitoring
+- Log Tracing
 ## Install
 ### kubeadm
 1. Deploy Kubernetes Using Docker CRI
@@ -52,12 +52,12 @@ $ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 $ helm install metrics-server metrics-server/metrics-server -n kube-system
 ```
 
-## Access Service
+## Access
 - Grafana:
   ```bash
   $ kubectl port-forward -n cilium-monitoring services/grafana 3000:3000
    ```
-  Visit Grafana: [http://127.0.0.1:3000](127.0.0.1:3000)  
+  Visit Grafana: [http://127.0.0.1:3000](http://127.0.0.1:3000)  
   
   Exit: `Ctrl + c` to stop fordward
   
@@ -65,7 +65,7 @@ $ helm install metrics-server metrics-server/metrics-server -n kube-system
   ```bash
   $ kubectl port-fordward -n kube-system services/hubble-ui 8081:8081
   ```
-  Visit Hubble: [http://127.0.0.1:8081](127.0.0.1:8081)
+  Visit Hubble: [http://127.0.0.1:8081](http://127.0.0.1:8081)
 
   Exit: `Ctrl + c` to stop fordward
 
