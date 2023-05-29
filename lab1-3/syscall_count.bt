@@ -1,0 +1,15 @@
+#!/usr/sbin/bpftrace
+
+
+tracepoint:raw_syscalls:sys_enter
+{
+  @syscall[pid,comm] = count();
+
+}
+
+END
+{
+  printf("\nTop 3 System Call Count:\n");
+  print(@syscall,5);
+  clear(@syscall)
+}

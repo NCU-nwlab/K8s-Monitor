@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-api-ingress
+  namespace: test-api
+  labels:
+    name: web
+    environment: production
+    method: traefik
+spec:
+  rules:
+  - host: test.k8s.nwlab.tk
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: test-api-svc
+            port: 
+              number: 80
