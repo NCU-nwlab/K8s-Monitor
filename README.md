@@ -1,6 +1,6 @@
 # K8s Monitor
 本專案為建構基於eBPF的K8s監控平台  
-Dependson On:
+Depends On:
 - [Cilium](https://github.com/cilium/cilium)
 - [Hubble](https://github.com/cilium/hubble)
 - [Prometheus](https://github.com/prometheus)
