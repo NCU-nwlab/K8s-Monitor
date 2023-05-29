@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name : lab-program
+    volumes:
+      - ./src:/usr/src/lab1
+    working_dir: /usr/src/lab1
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+  mysql:
+    container_name: lab-mysql
+    restart: always
+    image: mysql:latest
+    environment: 
+      - MYSQL_HOST=127.0.0.1
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=test
+    volumes:
+      - ./db:/var/lib/mysql
+    ports: 
+      - 127.0.0.1:3306:3306

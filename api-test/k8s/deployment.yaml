@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-api-deployment
+  namespace: test-api
+  labels:
+    app: test-api
+spec:
+  selector:
+    matchLabels:
+      app: test-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: test-api
+    spec:
+      containers:
+      - name: test-api
+        image: royjian/testapi
+        ports:
+        - containerPort: 8080

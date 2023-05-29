@@ -1,0 +1,21 @@
+#!/usr/sbin/bpftrace
+
+tracepoint:net:netif_receive_skb
+{
+    @skb_count = count();
+    @skb_len = sum(args->len);
+}
+
+tracepoint:net:net_dev_xmit
+{
+    @xmit_count = count();
+    @xmit_len = sum(args->skb->len);
+}
+
+interval:s:1 {
+    printf("Received sk_buff count: %d\n", @skb_count);
+    printf("Received sk_buff length: %d\n", @skb_len);
+    printf("Transmitted sk_buff count: %d\n", @xmit_count);
+    printf("Transmitted sk_buff length: %d\n", @xmit_len);
+}
+
